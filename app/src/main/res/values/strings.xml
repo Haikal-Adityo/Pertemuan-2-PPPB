@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Pertemuan 1</string>
+    <string name="app_name">Pertemuan 2</string>
+    <string name="toast">TOAST</string>
+    <string name="_0">0</string>
+    <string name="count">COUNT</string>
+    <string name="reset">RESET</string>
+
+    <string name="title">BMI Calculator</string>
+    <string name="beratBadan">Berat badan</string>
+    <string name="tinggiBadan">Tinggi badan</string>
+    <string name="hitung">HITUNG</string>
+    <string name="masukan_berat_badan">Masukan Berat Badan</string>
+    <string name="masukan_tinggi_badan">Masukan Tinggi Badan</string>
 </resources>
