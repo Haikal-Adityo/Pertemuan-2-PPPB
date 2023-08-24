@@ -9,6 +9,6 @@
     <string name="beratBadan">Berat badan</string>
     <string name="tinggiBadan">Tinggi badan</string>
     <string name="hitung">HITUNG</string>
-    <string name="masukan_berat_badan">Masukan Berat Badan</string>
-    <string name="masukan_tinggi_badan">Masukan Tinggi Badan</string>
+    <string name="masukan_berat_badan">Masukan berat badan</string>
+    <string name="masukan_tinggi_badan">Masukan tinggi badan</string>
 </resources>
