@@ -27,29 +27,29 @@ class MainActivity : AppCompatActivity() {
         binding.txtNumber.text = number.toString()
 
         binding.btnToast.setOnClickListener {
-            Toast.makeText(this@MainActivity, "BMI $number", Toast.LENGTH_SHORT).show()
+            showToast("BMI $number")
         }
 
         binding.btnHitung.setOnClickListener {
-            val berat = binding.BeratBadan.text.toString()
-            val tinggi = binding.TinggiBadan.text.toString()
+            val berat = binding.txtBeratBadan.text.toString()
+            val tinggi = binding.txtTinggiBadan.text.toString()
 
             if (berat.isNotEmpty() && tinggi.isNotEmpty()) {
                 hitungBMI()
             } else {
-                Toast.makeText(this@MainActivity, "Please fill in all fields.", Toast.LENGTH_SHORT).show()
+                showToast("Please fill in all fields.")
             }
         }
 
         // Mengunci key Enter
-        binding.BeratBadan.setOnKeyListener { _, keyCode, _ ->
+        binding.txtBeratBadan.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
                 return@setOnKeyListener true
             }
             false
         }
 
-        binding.TinggiBadan.setOnKeyListener { _, keyCode, _ ->
+        binding.txtTinggiBadan.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
                 return@setOnKeyListener true
             }
@@ -57,10 +57,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Membuat hanya bisa input angka
-        binding.BeratBadan.inputType = EditorInfo.TYPE_CLASS_NUMBER
-        binding.TinggiBadan.inputType = EditorInfo.TYPE_CLASS_NUMBER
+        binding.txtBeratBadan.inputType = EditorInfo.TYPE_CLASS_NUMBER
+        binding.txtTinggiBadan.inputType = EditorInfo.TYPE_CLASS_NUMBER
 
-        binding.TinggiBadan.setOnKeyListener { _, keyCode, _ ->
+        binding.txtTinggiBadan.setOnKeyListener { _, keyCode, _ ->
             if (keyCode == KeyEvent.KEYCODE_ENTER) {
                 return@setOnKeyListener true
             }
@@ -69,11 +69,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun hitungBMI() {
-        val berat = binding.BeratBadan.text.toString().toFloat()
-        val tinggi = binding.TinggiBadan.text.toString().toFloat() / 100
+        val berat = binding.txtBeratBadan.text.toString().toFloat()
+        val tinggi = binding.txtTinggiBadan.text.toString().toFloat() / 100
 
         if (berat <= 0 || tinggi <= 0) {
-            Toast.makeText(this@MainActivity, "Please enter valid values.", Toast.LENGTH_SHORT).show()
+            showToast("Please enter valid values.")
             return
         }
 
@@ -84,6 +84,10 @@ class MainActivity : AppCompatActivity() {
 
         // Mengubah warna text dan menampilkan message sesuai nilai BMI
         when {
+            bmi < 1 -> {
+                binding.txtNumber.setTextColor(ContextCompat.getColor(this, R.color.black))
+                showToast("Please enter valid values.")
+            }
             bmi < 17 -> {
                 binding.txtNumber.setTextColor(ContextCompat.getColor(this, R.color.colorSevere))
                 showToast("Low BMI")
